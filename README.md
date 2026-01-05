@@ -17,11 +17,11 @@ Core Features:
 
 1. Defense-in-Depth Security
 
-I didn't want to rely on the AI "promising" not to be malicious. I implemented a 3-Layer Security Model:
+    I didn't want to rely on the AI "promising" not to be malicious. I implemented a 3-Layer Security Model:
 
-Static Analysis: The system pre-scans code for forbidden keywords like import or __.
-Runtime Sandbox: I overrode Python's __builtins__ to physically remove dangerous functions like open(), eval(), and exec().
-Infrastructure Isolation: The execution engine runs in a dedicated Docker container with no network access. Even if code breaks out of Python, it's trapped in the container.
+    Static Analysis: The system pre-scans code for forbidden keywords like import or __.
+    Runtime Sandbox: I overrode Python's __builtins__ to physically remove dangerous functions like open(), eval(), and exec().
+    Infrastructure Isolation: The execution engine runs in a dedicated Docker container with no network access. Even if code breaks out of Python, it's trapped in the container.
 
 2. Statistical Context
 
