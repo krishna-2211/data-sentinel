@@ -1,4 +1,4 @@
-DataSentinel
+## DataSentinel
 
 A Human-in-the-Loop agent that safely cleans data, analyzes risk, and runs code in a real sandbox.
 
@@ -38,61 +38,52 @@ Core Features:
 
     I used Pydantic to enforce strict JSON schemas on the Gemini output. This prevents the common issue where LLMs generate conversational text instead of usable code, ensuring the UI always renders a valid         checklist.
 
-System Architecture
 
-graph LR
-    User[User Upload] --> Profiler[Data Profiler]
-    Profiler -->|DQR String| Brain[AI Engine (Gemini)]
-    Brain -->|Structured Plan (JSON)| UI[Streamlit Dashboard]
-    UI -->|User Approval| SecureRunner[Secure Docker Runner]
-    SecureRunner -->|Cleaned Data| User
-
-
-Tech Stack
+Tech Stack:
 
 Frontend: Streamlit
 AI Engine: Google Gemini API (Flash Model) + Pydantic
 Execution Engine: FastAPI + Docker
 Data Stack: Pandas, NumPy, SciPy
 
-Quick Start
+Quick Start:
 
 Prerequisites:
 Docker Desktop installed and running.
 Python 3.10+.
 A Google Gemini API Key.
 
-1. Set up the Environment
-
-# Clone the repo
+# 1. Set up the Environment
+Clone the repo
+```bash
 git clone [https://github.com/yourusername/secure-ai-agent.git](https://github.com/yourusername/secure-ai-agent.git)
 cd secure-ai-agent
 
 # Install dependencies
 pip install streamlit requests pandas google-generativeai pydantic
-
-2. Build the Secure Engine (Docker)
+```
+# 2. Build the Secure Engine (Docker)
 
 You need to build the sandbox container before running the app.
-
+```bash
 cd secure_code_runner
 docker build -t secure-runner .
 docker run -p 8000:8000 secure-runner
-
+```
 (Keep this terminal window open)
 
-3. Run the Dashboard
+# 3. Run the Dashboard
 
 Open a new terminal window in the root folder.
-
+```bash
 # Set your API Key
 $env:GEMINI_API_KEY="your_actual_api_key_here"
 
 # Run the App
 python -m streamlit run app.py
+```
 
-
-Security Deep Dive
+Security Deep Dive:
 
 The most interesting part of the build is the Secure Code Runner (runner_service.py). It uses a "Workshop vs. Workbench" model:
 
