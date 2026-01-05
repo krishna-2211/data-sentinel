@@ -25,18 +25,18 @@ Core Features:
 
 2. Statistical Context
 
-The agent doesn't just fix errors; it explains them.
+    The agent doesn't just fix errors; it explains them.
 
-Audit Log: Explains why a specific method (e.g., Median vs Mean) was chosen based on the data distribution.
-Risk Analysis: Warns you about potential downsides (e.g., "This method reduces variance by 5%") and suggests alternatives.
+    Audit Log: Explains why a specific method (e.g., Median vs Mean) was chosen based on the data distribution.
+    Risk Analysis: Warns you about potential downsides (e.g., "This method reduces variance by 5%") and suggests alternatives.
 
 3. Human-in-the-Loop
 
-No black boxes. The AI returns a Proposed Plan as a checklist. You explicitly Approve or Reject specific steps before any code is sent to the runner.
+    No black boxes. The AI returns a Proposed Plan as a checklist. You explicitly Approve or Reject specific steps before any code is sent to the runner.
 
 4. No Hallucinations
 
-I used Pydantic to enforce strict JSON schemas on the Gemini output. This prevents the common issue where LLMs generate conversational text instead of usable code, ensuring the UI always renders a valid checklist.
+    I used Pydantic to enforce strict JSON schemas on the Gemini output. This prevents the common issue where LLMs generate conversational text instead of usable code, ensuring the UI always renders a valid         checklist.
 
 System Architecture
 
